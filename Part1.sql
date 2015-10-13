@@ -50,8 +50,9 @@ changeTime TIMESTAMP
 )
 
 ALTER SESSION SET nls_date_format='yyyy-mm-dd';
+
 ----------------------------------------------------------------------------------------------
---Answer1)
+--Procedure to populate hotel rooms
 ----------------------------------------------------------------------------------------------
 CREATE OR REPLACE PROCEDURE PopulateHotelRooms(hID IN VARCHAR2, noFloors IN NUMBER, noFRooms IN NUMBER) IS
 floorCounter NUMBER;
@@ -69,7 +70,7 @@ FOR floorCounter IN 1..noFloors
 END;
 
 ----------------------------------------------------------------------------------------------
---Answer2)
+--Validation Triggers
 ----------------------------------------------------------------------------------------------
 CREATE OR REPLACE TRIGGER caseOne BEFORE INSERT OR UPDATE ON BOOKING FOR EACH ROW
 DECLARE

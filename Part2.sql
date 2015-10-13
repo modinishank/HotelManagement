@@ -19,8 +19,8 @@ START WITH 1
 INCREMENT BY 1
 CACHE 2
 
-hotelID, hotelName, city, roomNo, price, and type.
-
+-------------------------------------------------------------------------------------------------------------------
+--Quires used in project 
 -------------------------------------------------------------------------------------------------------------------
 SELECT H.HOTELID,H.HOTELNAME,H.CITY,R.ROOMNO,R.PRICE FROM ROOM R,HOTEL H WHERE H.HOTELID=R.HOTELID
 AND H.HOTELNAME='Oberoi'
