@@ -9,9 +9,20 @@
 </head>
 <body>
 <center><%@include file="Header.jsp"%></center>
+<div class="body">
+		<div class="body_resize">
 	<div style="min-height: 360px;margin-top: 10px;">
-		<center><h2>About Us</h2></center>	
+		<center><h2>About Us</h2>	
+		<h4>
+	We are world's largest chain of Best Hotels,<br>
+	We are committed to help our customers by offering them<br>
+	Best hotel reservations
+	</h4>
+	</center>
 	</div>
+
+</div>
+</div>
 <center><%@include file="Footer.jsp"%></center>
 </body>
 </html>

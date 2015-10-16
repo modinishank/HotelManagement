@@ -26,6 +26,14 @@ guestAddress VARCHAR2(50),
 guestAffiliation VARCHAR2(30)
 )
 
+CREATE TABLE ContactUs
+(
+contactName VARCHAR2(30),
+contactEmail VARCHAR2(70),
+contactMessage VARCHAR2(200),
+contactNumber VARCHAR2(15)
+)
+
 CREATE TABLE Booking
 (
 hotelID VARCHAR2(4),

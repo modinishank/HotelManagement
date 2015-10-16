@@ -1,13 +1,11 @@
 package model;
 
 import helper.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import bean.AvailableRoom;
 import bean.AvailableRoomList;
 import bean.Guest;
@@ -15,14 +13,9 @@ import bean.GuestList;
 import bean.Hotel;
 import bean.HotelList;
 
-import java.sql.ResultSet;
-
-
-
 public class DatabaseFunctions {
 
 	public GuestList retriveGuest(String guestName) {
-		// TODO Auto-generated method stub
 		
 		DBConnection connection = new DBConnection();
 		Connection conn=connection.getconnection();
@@ -60,7 +53,7 @@ public class DatabaseFunctions {
     }
 	
 	public int insertGuest(String guestName, String guestAddress) {
-		// TODO Auto-generated method stub
+		
 		
 		DBConnection connection = new DBConnection();
 		Connection conn=connection.getconnection();
@@ -75,6 +68,29 @@ public class DatabaseFunctions {
 			prepareStatement.setString(1,guestName);
 			prepareStatement.setString(2,guestAddress);
 			prepareStatement.setString(3,defaultGuestAffiliation);
+			prepareStatement.executeUpdate(); 
+			return PersonOperationConstant.SUCCESS_INSERTION;
+		}
+        catch(SQLException se)
+		{
+            return PersonOperationConstant.SQL_EXCEPTION;
+        }
+    }
+
+	public int insertContactUsDetails(String contactName,String contactEmail,String contactMessage,String contactNumber){
+		
+		DBConnection connection = new DBConnection();
+		Connection conn=connection.getconnection();
+        PreparedStatement prepareStatement = null;
+        String insertContactUsDetails = Query.INSERT_CONTACT_US_DETAILS;
+        
+        try
+		{   
+			prepareStatement = conn.prepareStatement(insertContactUsDetails);
+			prepareStatement.setString(1,contactName);
+			prepareStatement.setString(2,contactEmail);
+			prepareStatement.setString(3,contactMessage);
+			prepareStatement.setString(4,contactNumber);
 			prepareStatement.executeUpdate(); 
 			return PersonOperationConstant.SUCCESS_INSERTION;
 		}
@@ -130,7 +146,6 @@ public class DatabaseFunctions {
 	
 
 	public String bookRoomNow(String hotelId, String roomNumber, String guestId, String startDate, String endDate) {
-		// TODO Auto-generated method stub
 		
 		DBConnection connection = new DBConnection();
 		Connection conn=connection.getconnection();

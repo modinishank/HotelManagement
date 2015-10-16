@@ -90,8 +90,45 @@ public class GuestController extends HttpServlet {
 				System.out.println(PersonOperationConstant.SQL_EXCEPTION);
 			}
 		}
+		else if(strAction.equals("contactUs"))
+		{
+			try
+			{
+				contactUs(request,response);
+			}
+			catch (Exception e)
+			{
+				System.out.println(PersonOperationConstant.SQL_EXCEPTION);
+			}
+		}
 	}
 	
+	private void contactUs(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		DatabaseFunctions objDatabase = new DatabaseFunctions();
+		String contactName, contactEmail, contactMessage, contactNumber;
+		int result = 0;
+		contactName = request.getParameter("name");
+		contactEmail = request.getParameter("email");
+		contactMessage = request.getParameter("message");
+		contactNumber = request.getParameter("contactNumber");
+
+		try {
+			result = objDatabase.insertContactUsDetails(contactName, contactEmail, contactMessage, contactNumber);
+			if(result==1)
+				request.setAttribute("message", "Message inserted successfully");
+			else
+				request.setAttribute("message", "Message is not inserted");
+		}
+		catch(Exception e)
+		{
+			request.setAttribute("message", "An exception occured while trying to insert contact us message");
+		}
+
+        RequestDispatcher rd = request.getRequestDispatcher("ContactUs.jsp");
+		rd.forward(request, response);
+	}
+
 	private void checkGuest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		DatabaseFunctions objDatabase = new DatabaseFunctions();
