@@ -182,11 +182,10 @@ public class DatabaseFunctions {
 			prepareStatement.setString(4,startDate);
 			prepareStatement.setString(5,endDate);
 			resSet = prepareStatement.executeQuery();
-			
+			while(resSet.next())
 			{
 				bookingId = resSet.getString("BOOKINGID");
 			}
-			
 			return bookingId;
 		}
         catch(SQLException se)

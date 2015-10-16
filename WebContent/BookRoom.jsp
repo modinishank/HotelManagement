@@ -64,10 +64,11 @@
 					if(!"exception".equalsIgnoreCase(referenceNumber))
 						{
 					%>
-					<table cellpadding="5" cellspacing="5" border="1" align="center" style="margin-top: 10px;">
-						<thead>
+					<div class="CSSTableGenerator" >
+					<table style="margin-top: 10px;" class="CSSTableGenerator" >
+						<tr>
 							<th>Booking ID</th>
-						</thead>
+						</tr>
 						<tbody>
 							<tr>
 								<td><%=referenceNumber %></td>
@@ -77,6 +78,7 @@
 					%>
 						</tbody>
 				</table>
+				</div>
 				<div class="clr"></div>
 
 			</div>
